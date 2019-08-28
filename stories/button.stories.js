@@ -10,4 +10,4 @@ const buttonStories = storiesOf('Button', module)
     <Button><span role="img" aria-label="so cool">😀 😎 👍 💯</span></Button>
   ));
 
-export default buttonStories
+export default buttonStories;

@@ -24,7 +24,8 @@
     "test": "cross-env NODE_ENV=test jest --coverage",
     "test:clean": "rimraf ./coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook -p 6006",
+    "fix-js": "eslint-auto-fix"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
@@ -34,6 +35,7 @@
     "compression": "1.7.4",
     "connected-react-router": "^6.4.0",
     "cross-env": "5.2.0",
+    "eslint-auto-fix": "^1.0.0",
     "express": "4.17.1",
     "fontfaceobserver": "2.1.0",
     "history": "4.9.0",
@@ -67,6 +69,7 @@
     "@babel/preset-env": "7.4.5",
     "@babel/preset-react": "7.0.0",
     "@babel/register": "^7.4.4",
+    "@storybook/addon-info": "^5.1.11",
     "@storybook/react": "^5.1.11",
     "add-asset-html-webpack-plugin": "3.1.3",
     "babel-core": "7.0.0-bridge.0",

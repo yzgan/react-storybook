@@ -28,41 +28,50 @@ const widgetGaugeStories = storiesOf('Widget/Gauge', module)
     </GaugeMeter>
   ));
 
+const dataNull = [
+  {
+    csat: { value: null, date: null },
+    nps: { value: null, date: null }
+  }
+];
+
 const data = [
   {
-    csat: {
-      value: null,
-      date: null
-    },
-    nps: {
-      value: null,
-      date: null
-    }
+    csat: { value: 2, date: new Date().toISOString() },
+    nps: { value: 10, date: new Date().toISOString() }
+  }
+];
+
+const dataMultiple = [
+  {
+    csat: { value: 2, date: new Date().toISOString() },
+    nps: { value: 10, date: new Date().toISOString() }
   },
   {
-    csat: {
-      value: 5,
-      date: new Date().toISOString()
-    },
-    nps: {
-      value: 10,
-      date: new Date().toISOString()
-    }
-  },
+    csat: { value: 4, date: new Date().toISOString() },
+    nps: { value: 8, date: new Date().toISOString() }
+  }
 ];
 
 const surveyStories = storiesOf('Survey', module)
   .add('No data', () => (
     <Row type="flex" justify="space-around" style={{ padding: 30 }}>
       <Col span={24}>
-        <SurveyWidget title="Overall RWS Customer Satisfaction Survey" data={data[0]}></SurveyWidget>
+        <SurveyWidget title="Overall RWS Customer Satisfaction Survey" data={dataNull}></SurveyWidget>
       </Col>
     </Row>
   ))
   .add('with single response', () => (
     <Row type="flex" justify="space-around" style={{ padding: 30 }}>
       <Col span={24}>
-        <SurveyWidget title="Overall RWS Customer Satisfaction Survey" data={data[1]}></SurveyWidget>
+        <SurveyWidget title="Overall RWS Customer Satisfaction Survey" data={data}></SurveyWidget>
+      </Col>
+    </Row>
+  ))
+  .add('with multiple responses', () => (
+    <Row type="flex" justify="space-around" style={{ padding: 30 }}>
+      <Col span={24}>
+        <SurveyWidget title="Overall RWS Customer Satisfaction Survey" data={dataMultiple}></SurveyWidget>
       </Col>
     </Row>
   ));

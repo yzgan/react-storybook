@@ -7,10 +7,14 @@ import {
   Col
 } from 'antd';
 import GaugeMeter from './GaugeMeter';
+import TrendIndicator from './TrendIndicator';
 
 const SurveyWidget = (props) => {
   const { title, data } = props;
-  const { csat, nps } = data;
+  const { csat, nps } = data[data.length - 1];
+  const csatTrendData = data.map((element) => (element.csat.value));
+  const npsTrendData = data.map((element) => (element.nps.value));
+
   return (
     <Card title={title}>
       <Row>
@@ -20,7 +24,10 @@ const SurveyWidget = (props) => {
               <GaugeMeter name="CSAT" val={csat.value} min={1} max={5} breakpoints={[2, 4]} height={400} />
             </Col>
             <Col span={24} align="middle">
-              <p>As of {moment(csat.date).format('DD MMM YYYY')}</p>
+              { csat.date && <p>As of {moment(csat.date).format('DD MMM YYYY')}</p> }
+            </Col>
+            <Col span={24} align="middle" style={{ position: 'relative', bottom: 80, left: 40 }}>
+              <TrendIndicator data={csatTrendData}></TrendIndicator>
             </Col>
           </Row>
         </Col>
@@ -30,7 +37,10 @@ const SurveyWidget = (props) => {
               <GaugeMeter name="NPS" val={nps.value} min={0} max={10} breakpoints={[2, 8]} height={400} />
             </Col>
             <Col span={24} align="middle">
-              <p>As of {moment(nps.date).format('DD MMM YYYY')}</p>
+              { nps.date && <p>As of {moment(nps.date).format('DD MMM YYYY')}</p> }
+            </Col>
+            <Col span={24} align="middle" style={{ position: 'relative', bottom: 80, left: 40 }}>
+              <TrendIndicator data={npsTrendData}></TrendIndicator>
             </Col>
           </Row>
         </Col>
@@ -41,7 +51,7 @@ const SurveyWidget = (props) => {
 
 SurveyWidget.propTypes = {
   title: propTypes.string,
-  data: propTypes.object
+  data: propTypes.array
 };
 
 export default SurveyWidget;

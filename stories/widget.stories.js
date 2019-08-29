@@ -4,12 +4,12 @@ import {
   Row,
   Col
 } from 'antd';
-import { SurveyWidget, GaugeMeter } from '../app/components/SurveyManagement';
+import { SurveyWidget, SurveyWidget2, GaugeMeter } from '../app/components/SurveyManagement';
 
 const widgetGaugeStories = storiesOf('Widget/Gauge', module)
-  .add('CSAT', () => (
+  .add('SAT', () => (
     <GaugeMeter
-      name="CSAT"
+      name="SAT"
       min={0}
       max={6}
       breakpoints={[2, 4]}
@@ -17,9 +17,9 @@ const widgetGaugeStories = storiesOf('Widget/Gauge', module)
     >
     </GaugeMeter>
   ))
-  .add('NPS', () => (
+  .add('NET', () => (
     <GaugeMeter
-      name="NPS"
+      name="NET"
       min={0}
       max={10}
       breakpoints={[4, 8]}
@@ -30,26 +30,26 @@ const widgetGaugeStories = storiesOf('Widget/Gauge', module)
 
 const dataNull = [
   {
-    csat: { value: null, date: null },
-    nps: { value: null, date: null }
+    sat: { value: null, date: null },
+    net: { value: null, date: null }
   }
 ];
 
 const data = [
   {
-    csat: { value: 2, date: new Date().toISOString() },
-    nps: { value: 10, date: new Date().toISOString() }
+    sat: { value: 2, date: new Date().toISOString() },
+    net: { value: 10, date: new Date().toISOString() }
   }
 ];
 
 const dataMultiple = [
   {
-    csat: { value: 2, date: new Date().toISOString() },
-    nps: { value: 10, date: new Date().toISOString() }
+    sat: { value: 2, date: new Date().toISOString() },
+    net: { value: 10, date: new Date().toISOString() }
   },
   {
-    csat: { value: 4, date: new Date().toISOString() },
-    nps: { value: 8, date: new Date().toISOString() }
+    sat: { value: 4, date: new Date().toISOString() },
+    net: { value: 8, date: new Date().toISOString() }
   }
 ];
 
@@ -57,21 +57,28 @@ const surveyStories = storiesOf('Survey', module)
   .add('No data', () => (
     <Row type="flex" justify="space-around" style={{ padding: 30 }}>
       <Col span={24}>
-        <SurveyWidget title="Overall RWS Customer Satisfaction Survey" data={dataNull}></SurveyWidget>
+        <SurveyWidget title="Overall Survey" data={dataNull}></SurveyWidget>
       </Col>
     </Row>
   ))
   .add('with single response', () => (
     <Row type="flex" justify="space-around" style={{ padding: 30 }}>
       <Col span={24}>
-        <SurveyWidget title="Overall RWS Customer Satisfaction Survey" data={data}></SurveyWidget>
+        <SurveyWidget title="Overall Survey" data={data}></SurveyWidget>
       </Col>
     </Row>
   ))
-  .add('with multiple responses', () => (
+  .add('with multiple responses - 1', () => (
     <Row type="flex" justify="space-around" style={{ padding: 30 }}>
       <Col span={24}>
-        <SurveyWidget title="Overall RWS Customer Satisfaction Survey" data={dataMultiple}></SurveyWidget>
+        <SurveyWidget title="Overall Survey" data={dataMultiple}></SurveyWidget>
+      </Col>
+    </Row>
+  ))
+  .add('with multiple responses - 2', () => (
+    <Row type="flex" justify="space-around" style={{ padding: 30 }}>
+      <Col span={24}>
+        <SurveyWidget2 title="Overall Survey" data={dataMultiple}></SurveyWidget2>
       </Col>
     </Row>
   ));

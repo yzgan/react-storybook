@@ -11,9 +11,9 @@ import TrendIndicator from './TrendIndicator';
 
 const SurveyWidget = (props) => {
   const { title, data } = props;
-  const { csat, nps } = data[data.length - 1];
-  const csatTrendData = data.map((element) => (element.csat.value));
-  const npsTrendData = data.map((element) => (element.nps.value));
+  const { sat, net } = data[data.length - 1];
+  const satTrendData = data.map((element) => (element.sat.value));
+  const netTrendData = data.map((element) => (element.net.value));
 
   return (
     <Card title={title}>
@@ -21,26 +21,26 @@ const SurveyWidget = (props) => {
         <Col sm={24} md={12}>
           <Row>
             <Col span={24} style={{ height: 250 }}>
-              <GaugeMeter name="CSAT" val={csat.value} min={1} max={5} breakpoints={[2, 4]} height={400} />
+              <GaugeMeter name="SAT" val={sat.value} min={1} max={5} breakpoints={[2, 4]} height={400} />
             </Col>
             <Col span={24} align="middle">
-              { csat.date && <p>As of {moment(csat.date).format('DD MMM YYYY')}</p> }
+              { sat.date && <p>As of {moment(sat.date).format('DD MMM YYYY')}</p> }
             </Col>
             <Col span={24} align="middle" style={{ position: 'relative', bottom: 80, left: 40 }}>
-              <TrendIndicator data={csatTrendData}></TrendIndicator>
+              <TrendIndicator data={satTrendData}></TrendIndicator>
             </Col>
           </Row>
         </Col>
         <Col sm={24} md={12}>
           <Row>
             <Col span={24} style={{ height: 250 }}>
-              <GaugeMeter name="NPS" val={nps.value} min={0} max={10} breakpoints={[2, 8]} height={400} />
+              <GaugeMeter name="NET" val={net.value} min={0} max={10} breakpoints={[2, 8]} height={400} />
             </Col>
             <Col span={24} align="middle">
-              { nps.date && <p>As of {moment(nps.date).format('DD MMM YYYY')}</p> }
+              { net.date && <p>As of {moment(net.date).format('DD MMM YYYY')}</p> }
             </Col>
             <Col span={24} align="middle" style={{ position: 'relative', bottom: 80, left: 40 }}>
-              <TrendIndicator data={npsTrendData}></TrendIndicator>
+              <TrendIndicator data={netTrendData}></TrendIndicator>
             </Col>
           </Row>
         </Col>

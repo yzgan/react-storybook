@@ -1,8 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import GaugeMeter from '../app/components/GaugeMeter';
+import {
+  Row,
+  Col
+} from 'antd';
+import { SurveyWidget, GaugeMeter } from '../app/components/SurveyManagement';
 
-const buttonStories = storiesOf('Widget/Gauge', module)
+const widgetGaugeStories = storiesOf('Widget/Gauge', module)
   .add('CSAT', () => (
     <GaugeMeter
       name="CSAT"
@@ -24,4 +28,46 @@ const buttonStories = storiesOf('Widget/Gauge', module)
     </GaugeMeter>
   ));
 
-export default buttonStories;
+const data = [
+  {
+    csat: {
+      value: null,
+      date: null
+    },
+    nps: {
+      value: null,
+      date: null
+    }
+  },
+  {
+    csat: {
+      value: 5,
+      date: new Date().toISOString()
+    },
+    nps: {
+      value: 10,
+      date: new Date().toISOString()
+    }
+  },
+];
+
+const surveyStories = storiesOf('Survey', module)
+  .add('No data', () => (
+    <Row type="flex" justify="space-around" style={{ padding: 30 }}>
+      <Col span={24}>
+        <SurveyWidget title="Overall RWS Customer Satisfaction Survey" data={data[0]}></SurveyWidget>
+      </Col>
+    </Row>
+  ))
+  .add('with single response', () => (
+    <Row type="flex" justify="space-around" style={{ padding: 30 }}>
+      <Col span={24}>
+        <SurveyWidget title="Overall RWS Customer Satisfaction Survey" data={data[1]}></SurveyWidget>
+      </Col>
+    </Row>
+  ));
+
+export default {
+  surveyStories,
+  widgetGaugeStories
+};

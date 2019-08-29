@@ -78,7 +78,7 @@ class GaugeMeter extends React.Component {
     const { lineWidth } = this.state;
     // const val = this.state.data[0].value;
     const {
-      val, min, max, breakpoints, name
+      val, min, max, breakpoints, name, height
     } = this.props;
     const cols = {
       value: {
@@ -91,7 +91,7 @@ class GaugeMeter extends React.Component {
 
     return (
       <Chart
-        height={500}
+        height={height}
         data={[{ value: val }]}
         scale={cols}
         padding={[0, 0, 200, 0]}
@@ -182,7 +182,7 @@ class GaugeMeter extends React.Component {
           {val < breakpoints[0] && ( // blue region
             <Arc
               zIndex={1}
-              start={[0, 0.965]}
+              start={[min, 0.965]}
               end={[val, 0.965]}
               style={{
                 stroke: color[0],
@@ -192,7 +192,7 @@ class GaugeMeter extends React.Component {
           )}
           <Html
             position={['50%', '100%']}
-            html={() => `<div style="width: 300px;text-align: center;font-size: 12px!important;"><p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">${name}</p><p style="font-size: 3em;color: rgba(0,0,0,0.85);margin: 0;">${val}</p></div>`
+            html={() => `<div style="width: 300px;text-align: center;font-size: 12px!important;"><p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">${name}</p><p style="font-size: 3em;color: rgba(0,0,0,0.85);margin: 0;">${val || '-'}</p></div>`
             }
           />
         </Guide>
@@ -213,6 +213,7 @@ GaugeMeter.propTypes = {
   val: PropTypes.number,
   min: PropTypes.number,
   max: PropTypes.number,
+  height: PropTypes.number,
   breakpoints: PropTypes.array,
   name: PropTypes.string
 };
@@ -221,6 +222,7 @@ GaugeMeter.defaultProps = {
   val: 0,
   min: 0,
   max: 5,
+  height: 500,
   breakpoints: [2, 4],
   name: 'Meter'
 };

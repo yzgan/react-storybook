@@ -33,30 +33,93 @@ const widgetGaugeStories = storiesOf('Widget/Gauge', module)
     </GaugeMeter>
   ));
 
-const dataNull = [
-  {
-    sat: { value: null, date: null },
-    net: { value: null, date: null }
+const data = {
+  surveyManagement: {
+    options: {
+      availableSurveyCategories: ['gaming', 'non-gaming'],
+      availableSurveyTypes: ['durian event', 'mangosteen event']
+    },
+    surveys: {
+      category: 'gaming',
+      type: 'durian event',
+      date: '2019-09-03T02:30:52.022Z',
+      sat: 3,
+      net: 8,
+      textResponses: [
+        {
+          responseId: 1, sat: 5, net: 10, sentimentalScore: 7, date: '2019-09-03T02:30:52.022Z', content: 'Sangat menikmati pelayannya baik ramah dan bersahabat'
+        }
+      ],
+      statistic: {
+        fromDate: '2016-09-03T02:30:52.022Z',
+        toDate: '2019-09-03T02:30:52.022Z',
+        records: [
+          {
+            responseId: 1, sat: 5, net: 10, sentimentalScore: 8, date: '2018-01-03T02:30:52.022Z', content: 'Sangat menikmati pelayannya baik ramah dan bersahabat'
+          }
+        ],
+      }
+    }
   }
-];
+};
 
-const data = [
-  {
-    sat: { value: 2, date: new Date().toISOString() },
-    net: { value: 10, date: new Date().toISOString() }
+const dataMultiple = {
+  surveyManagement: {
+    options: {
+      availableSurveyCategories: ['gaming', 'non-gaming'],
+      availableSurveyTypes: ['durian event', 'mangosteen event']
+    },
+    surveys: {
+      category: 'gaming',
+      type: 'durian event',
+      date: '2019-09-03T02:30:52.022Z',
+      sat: 3,
+      net: 8,
+      textResponses: [
+        {
+          responseId: 1, sat: 5, net: 10, sentimentalScore: 7, date: '2019-09-03T02:30:52.022Z', content: 'Sangat menikmati pelayannya baik ramah dan bersahabat'
+        },
+        {
+          responseId: 2, sat: 3, net: 8, sentimentalScore: 5, date: '2019-09-03T02:30:52.022Z', content: 'good services'
+        },
+      ],
+      statistic: {
+        fromDate: '2016-09-03T02:30:52.022Z',
+        toDate: '2019-09-03T02:30:52.022Z',
+        records: [
+          {
+            responseId: 1, sat: 5, net: 10, sentimentalScore: 8, date: '2018-01-03T02:30:52.022Z', content: 'Sangat menikmati pelayannya baik ramah dan bersahabat'
+          },
+          {
+            responseId: 2, sat: 3, net: 8, sentimentalScore: 5, date: '2019-09-03T02:30:52.022Z', content: 'good services'
+          },
+        ],
+      }
+    }
   }
-];
+};
 
-const dataMultiple = [
-  {
-    sat: { value: 2, date: new Date().toISOString() },
-    net: { value: 10, date: new Date().toISOString() }
-  },
-  {
-    sat: { value: 4, date: new Date().toISOString() },
-    net: { value: 8, date: new Date().toISOString() }
+const dataNull = {
+  surveyManagement: {
+    options: {
+      availableSurveyCategories: ['gaming', 'non-gaming'],
+      availableSurveyTypes: ['durian event', 'mangosteen event']
+    },
+    surveys: {
+      category: 'gaming',
+      type: 'durian event',
+      date: null,
+      sat: null,
+      net: null,
+      textResponses: [],
+      statistic: {
+        fromDate: '2016-09-03T02:30:52.022Z',
+        toDate: '2019-09-03T02:30:52.022Z',
+        records: [],
+      }
+    }
   }
-];
+};
 
 const surveyStories = storiesOf('Survey', module)
   .add('No Survey Record', () => (

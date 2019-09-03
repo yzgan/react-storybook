@@ -4,7 +4,12 @@ import {
   Row,
   Col
 } from 'antd';
-import { SurveyWidget, SurveyWidget2, GaugeMeter } from '../app/components/SurveyManagement';
+import {
+  SurveyWidget,
+  SurveyWidget2,
+  GaugeMeter,
+  NoSurveyRecord
+} from '../app/components/SurveyManagement';
 
 const widgetGaugeStories = storiesOf('Widget/Gauge', module)
   .add('SAT', () => (
@@ -54,6 +59,13 @@ const dataMultiple = [
 ];
 
 const surveyStories = storiesOf('Survey', module)
+  .add('No Survey Record', () => (
+    <Row type="flex" justify="space-around" style={{ padding: 30 }}>
+      <Col span={24}>
+        <NoSurveyRecord title="Overall Survey" />
+      </Col>
+    </Row>
+  ))
   .add('No data', () => (
     <Row type="flex" justify="space-around" style={{ padding: 30 }}>
       <Col span={24}>

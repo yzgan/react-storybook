@@ -4,11 +4,11 @@ import moment from 'moment';
 import {
   Card,
   Row,
-  Col,
-  Modal
+  Col
 } from 'antd';
 import GaugeMeter from './GaugeMeter';
 import TrendIndicator from './TrendIndicator';
+import SurveyModal from './SurveyModal';
 
 const SurveyWidget = (props) => {
   const { title, data } = props;
@@ -20,6 +20,8 @@ const SurveyWidget = (props) => {
 
   // TODO: use react redux store for state management.
   const [visible, setVisible] = useState(false);
+  const [surveyCategory, setSurveyCategory] = useState('non-gaming');
+  const [surveyType, setSurveyType] = useState('');
 
   const showModal = () => {
     setVisible(true);
@@ -63,18 +65,16 @@ const SurveyWidget = (props) => {
           </Row>
         </Col>
       </Row>
-      <Modal
-        title="Basic Modal"
+      <SurveyModal
+        title="Customer Satisfactory Survey"
+        availableSurveyCategories={data.surveyManagement.options.availableSurveyCategories}
+        availableSurveyTypes={data.surveyManagement.options.availableSurveyTypes}
+        surveyCategoryStateHook={[surveyCategory, setSurveyCategory]}
+        surveyTypeStateHook={[surveyType, setSurveyType]}
         visible={visible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer={null}
-        width={800}
-      >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Modal>
+        handleOk={handleOk}
+        handleCancel={handleCancel}
+      />
     </Card>
   );
 };

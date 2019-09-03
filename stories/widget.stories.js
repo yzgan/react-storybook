@@ -36,7 +36,7 @@ const widgetGaugeStories = storiesOf('Widget/Gauge', module)
 const data = {
   surveyManagement: {
     options: {
-      availableSurveyCategories: ['gaming', 'non-gaming'],
+      availableSurveyCategories: ['non-gaming', 'gaming'],
       availableSurveyTypes: ['durian event', 'mangosteen event']
     },
     surveys: {
@@ -66,8 +66,8 @@ const data = {
 const dataMultiple = {
   surveyManagement: {
     options: {
-      availableSurveyCategories: ['gaming', 'non-gaming'],
-      availableSurveyTypes: ['durian event', 'mangosteen event']
+      availableSurveyCategories: ['non-gaming', 'gaming'],
+      availableSurveyTypes: ['durian event', 'mangosteen event', 'apple event', 'orange event', 'pineapple event']
     },
     surveys: {
       category: 'gaming',
@@ -102,7 +102,7 @@ const dataMultiple = {
 const dataNull = {
   surveyManagement: {
     options: {
-      availableSurveyCategories: ['gaming', 'non-gaming'],
+      availableSurveyCategories: ['non-gaming', 'gaming'],
       availableSurveyTypes: ['durian event', 'mangosteen event']
     },
     surveys: {

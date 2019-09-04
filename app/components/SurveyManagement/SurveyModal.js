@@ -2,11 +2,9 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import {
   Modal,
-  Row,
-  Col,
-  Radio
 } from 'antd';
-
+import SurveyModalOptions from './SurveyModalOptions';
+import SurveyModalResults from './SurveyModalResults';
 
 const SurveyModal = (props) => {
   const {
@@ -14,61 +12,16 @@ const SurveyModal = (props) => {
     visible,
     handleOk,
     handleCancel,
-    surveyCategoryStateHook,
-    surveyTypeStateHook,
-    availableSurveyCategories,
-    availableSurveyTypes,
     width
   } = props;
 
-  const [category, setCategory] = surveyCategoryStateHook;
-  const [type, setType] = surveyTypeStateHook;
-
-  const handleCategoryChange = (event) => setCategory(event.target.value);
-  const handleTypeChange = (event) => {
-    setType(event.target.value);
-  };
   return (
-    <Modal
-      title={title}
-      visible={visible}
-      onOk={handleOk}
-      onCancel={handleCancel}
-      footer={null}
-      width={width}
-    >
-      <Row>
-        <Col span={4}>
-          Survey Category:
-        </Col>
-        <Col>
-          <Radio.Group onChange={handleCategoryChange} value={category}>
-            {
-              availableSurveyCategories.map(
-                (categoryName) => <Radio key={categoryName} value={categoryName}>{categoryName}</Radio>
-              )
-            }
-          </Radio.Group>
-        </Col>
-      </Row>
-      <Row>
-        <Col span={4}>
-          Survey Type:
-        </Col>
-        <Col>
-          <Radio.Group onChange={handleTypeChange} value={type}>
-            {
-              availableSurveyTypes.map(
-                (typeName) => <Radio key={typeName} value={typeName}>{typeName}</Radio>
-              )
-            }
-          </Radio.Group>
-        </Col>
-      </Row>
+    <Modal title={title} visible={visible} onOk={handleOk} onCancel={handleCancel} footer={null} width={width}>
+      <SurveyModalOptions {...props} />
+      <SurveyModalResults {...props} />
     </Modal>
   );
 };
-
 
 SurveyModal.propTypes = {
   title: Proptypes.string,

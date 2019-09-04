@@ -102,8 +102,8 @@ const dataMultiple = {
 const dataNull = {
   surveyManagement: {
     options: {
-      availableSurveyCategories: ['non-gaming', 'gaming'],
-      availableSurveyTypes: ['durian event', 'mangosteen event']
+      availableSurveyCategories: [],
+      availableSurveyTypes: []
     },
     surveys: {
       category: 'gaming',

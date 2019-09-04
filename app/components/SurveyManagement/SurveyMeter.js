@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import {
   Row,
@@ -40,5 +40,13 @@ const SurveyMeter = ({
     </Col>
   </Row>
 );
+
+SurveyMeter.propTypes = {
+  date: PropTypes.string,
+  sat: PropTypes.number.isRequired,
+  net: PropTypes.number.isRequired,
+  satTrendData: PropTypes.array,
+  netTrendData: PropTypes.array
+};
 
 export default SurveyMeter;

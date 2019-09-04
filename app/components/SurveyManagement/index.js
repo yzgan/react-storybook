@@ -5,6 +5,7 @@ import NoSurveyRecord from './NoSurveyRecord';
 import SurveyModal from './SurveyModal';
 import SurveyModalOptions from './SurveyModalOptions';
 import SurveyModalResults from './SurveyModalResults';
+import SurveyMeter from './SurveyMeter';
 
 export {
   GaugeMeter,
@@ -13,5 +14,6 @@ export {
   NoSurveyRecord,
   SurveyModal,
   SurveyModalOptions,
-  SurveyModalResults
+  SurveyModalResults,
+  SurveyMeter
 };

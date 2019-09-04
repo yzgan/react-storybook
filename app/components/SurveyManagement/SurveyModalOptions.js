@@ -30,7 +30,7 @@ const SurveyModalOptions = (props) => {
   );
 
   return (
-    <div id="survey-modal-options">
+    <div id="survey-modal-options" style={{ padding: 20 }}>
       <Row style={{ padding: 4 }}>
         <Col span={4}>
           Survey Category:

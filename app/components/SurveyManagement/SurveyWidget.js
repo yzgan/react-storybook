@@ -54,6 +54,7 @@ const SurveyWidget = (props) => {
         handleOk={handleOk}
         handleCancel={handleCancel}
         data={data}
+        surveyMeterProps={surveyMeterProps}
       />
     </Card>
   );

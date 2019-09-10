@@ -4,8 +4,9 @@ import {
   Row,
   Col
 } from 'antd';
+import SurveyMeter from './SurveyMeter';
 
-const SurveyModalResults = ({ data }) => {
+const SurveyModalResults = ({ data, surveyMeterProps }) => {
   const { textResponses, statistic } = data;
 
   if (data && textResponses && statistic) {
@@ -13,10 +14,11 @@ const SurveyModalResults = ({ data }) => {
       <div id="survey-modal-results" style={{ padding: 20 }}>
         <Row>
           <Col span={12}>
-                result 1
+            result 1
+            <SurveyMeter {...surveyMeterProps} />
           </Col>
           <Col span={12}>
-                result 2
+            result 2
           </Col>
         </Row>
       </div>
@@ -27,7 +29,8 @@ const SurveyModalResults = ({ data }) => {
 
 
 SurveyModalResults.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  surveyMeterProps: PropTypes.object.isRequired
 };
 
 export default SurveyModalResults;

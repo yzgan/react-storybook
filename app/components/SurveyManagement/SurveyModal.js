@@ -13,13 +13,22 @@ const SurveyModal = (props) => {
     handleOk,
     handleCancel,
     width,
-    data
+    data,
+    surveyMeterProps
   } = props;
 
   return (
-    <Modal title={title} visible={visible} onOk={handleOk} onCancel={handleCancel} footer={null} width={width}>
+    <Modal
+      title={title}
+      visible={visible}
+      onOk={handleOk}
+      onCancel={handleCancel}
+      footer={null}
+      width={width}
+      style={{ top: 20 }}
+    >
       <SurveyModalOptions {...props} />
-      <SurveyModalResults data={data.surveyManagement.surveys} />
+      <SurveyModalResults data={data.surveyManagement.surveys} surveyMeterProps={surveyMeterProps} />
     </Modal>
   );
 };
@@ -34,7 +43,8 @@ SurveyModal.propTypes = {
   surveyCategoryStateHook: Proptypes.array.isRequired,
   surveyTypeStateHook: Proptypes.array.isRequired,
   width: Proptypes.number,
-  data: Proptypes.object
+  data: Proptypes.object,
+  surveyMeterProps: Proptypes.object.isRequired
 };
 
 SurveyModal.defaultProps = {
